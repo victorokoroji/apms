@@ -24,7 +24,7 @@ const tip = {
 
 export function RepDashboard() {
   const { user } = useAuth();
-  const me = employees.find((e) => e.name.startsWith(user?.name.split(" ")[0])) ?? employees[1];
+  const me = employees.find((e) => e.name.startsWith(user?.name?.split(" ")[0] as string)) ?? employees[1];
   const cp = (me.ordersConfirmed / me.ordersReceived) * 100;
 
   const weekly = Array.from({ length: 8 }).map((_, i) => ({
