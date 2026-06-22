@@ -72,5 +72,5 @@ export const useAuth = create<AuthState>()(
  */
 export const useAuthedUser = (): AuthUser => {
   const user = useAuth((s) => s.user);
-  return user ?? ROLE_USERS.ceo;
+  return user ?? ROLE_USERS.call_rep;
 };
