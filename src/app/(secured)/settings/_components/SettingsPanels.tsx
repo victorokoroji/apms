@@ -8,14 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-import { useAuth } from "@/lib/store";
+import { AuthUser, useAuth } from "@/lib/store";
 import { initials } from "@/lib/format";
 import { Save, KeyRound } from "lucide-react";
 
 export function SettingsPanels() {
-  const { user } = useAuth();
-  const [name, setName] = useState(user?.name);
-  const [email, setEmail] = useState(user?.email);
+  const { user } = useAuth() as { user: AuthUser };
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState("Performance enthusiast at Admord Global.");
   const [prefs, setPrefs] = useState({
     emailReports: true,
@@ -37,7 +37,7 @@ export function SettingsPanels() {
           <div className="flex flex-col gap-5 md:flex-row md:items-start">
             <div className="flex items-center gap-4">
               <div className="grid h-20 w-20 place-items-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
-                {initials(user?.name as string)}
+                {initials(user.name as string)}
               </div>
               <Button variant="outline" size="sm">Change photo</Button>
             </div>

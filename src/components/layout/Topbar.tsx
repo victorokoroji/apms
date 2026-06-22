@@ -92,17 +92,17 @@ export function Topbar() {
               className="flex items-center gap-2 rounded-md border border-border px-2 py-1 h-9 hover:bg-accent"
             >
               <div className="grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
-                {initials(user?.name)}
+                {initials(user.name)}
               </div>
-              <span className="hidden sm:inline text-sm font-medium">{user?.name.split(" ")[0]}</span>
+              <span className="hidden sm:inline text-sm font-medium">{user.name.split(" ")[0]}</span>
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-60">
             <DropdownMenuLabel className="font-normal">
-              <div className="text-sm font-semibold text-foreground">{user?.name}</div>
-              <div className="text-xs text-muted-foreground">{user?.email}</div>
+              <div className="text-sm font-semibold text-foreground">{user.name}</div>
+              <div className="text-xs text-muted-foreground">{user.email}</div>
               <div className="mt-1 text-[10px] font-medium uppercase tracking-wider text-primary">
-                {ROLE_LABELS[user?.role]}
+                {ROLE_LABELS[user.role]}
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />

@@ -7,7 +7,7 @@ import { DateRangeFilter } from "@/components/layout/DateRangeFilter";
 import { Chart } from "@/components/layout/Chart";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { useAuth } from "@/lib/store";
+import { AuthUser, useAuth } from "@/lib/store";
 import { teams, employees, revenueTrend, confirmTrend } from "@/lib/mock";
 import { fmtNaira, fmtNum, fmtPct, initials } from "@/lib/format";
 import { DollarSign, TrendingUp, ShoppingCart, CheckCircle2, Percent, Search } from "lucide-react";
@@ -21,8 +21,8 @@ const tip = {
 };
 
 export function LeaderDashboard() {
-  const { user } = useAuth();
-  const team = teams.find((t) => t.id === user?.teamId) ?? teams[0];
+  const { user } = useAuth() as { user: AuthUser };
+  const team = teams.find((t) => t.id === user.teamId) ?? teams[0];
   const members = employees.filter((e) => e.teamId === team.id);
   const roi = ((team.revenue - team.amountLoaded) / team.amountLoaded) * 100;
   const cp = (team.ordersConfirmed / team.ordersReceived) * 100;

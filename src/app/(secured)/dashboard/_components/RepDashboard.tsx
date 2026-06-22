@@ -7,7 +7,7 @@ import { ChartCard } from "@/components/layout/ChartCard";
 import { DateRangeFilter } from "@/components/layout/DateRangeFilter";
 import { Chart } from "@/components/layout/Chart";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/lib/store";
+import { AuthUser, useAuth } from "@/lib/store";
 import { employees, revenueTrend, confirmTrend } from "@/lib/mock";
 import { fmtNaira, fmtNum, fmtPct } from "@/lib/format";
 import {
@@ -23,8 +23,8 @@ const tip = {
 };
 
 export function RepDashboard() {
-  const { user } = useAuth();
-  const me = employees.find((e) => e.name.startsWith(user?.name?.split(" ")[0] as string)) ?? employees[1];
+  const { user } = useAuth() as { user: AuthUser };
+  const me = employees.find((e) => e.name.startsWith(user.name.split(" ")[0] as string)) ?? employees[1];
   const cp = (me.ordersConfirmed / me.ordersReceived) * 100;
 
   const weekly = Array.from({ length: 8 }).map((_, i) => ({
@@ -35,7 +35,7 @@ export function RepDashboard() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title={`Welcome back, ${user?.name.split(" ")[0]}`}
+        title={`Welcome back, ${user.name.split(" ")[0]}`}
         description="Your personal performance at a glance."
         actions={
           <>
