@@ -22,7 +22,7 @@ const tip = {
 
 export function LeaderDashboard() {
   const { user } = useAuth();
-  const team = teams.find((t) => t.id === user.teamId) ?? teams[0];
+  const team = teams.find((t) => t.id === user?.teamId) ?? teams[0];
   const members = employees.filter((e) => e.teamId === team.id);
   const roi = ((team.revenue - team.amountLoaded) / team.amountLoaded) * 100;
   const cp = (team.ordersConfirmed / team.ordersReceived) * 100;
