@@ -24,7 +24,7 @@ const tip = {
 
 export function RepDashboard() {
   const { user } = useAuth();
-  const me = employees.find((e) => e.name.startsWith(user.name.split(" ")[0])) ?? employees[1];
+  const me = employees.find((e) => e.name.startsWith(user?.name.split(" ")[0])) ?? employees[1];
   const cp = (me.ordersConfirmed / me.ordersReceived) * 100;
 
   const weekly = Array.from({ length: 8 }).map((_, i) => ({
@@ -35,7 +35,7 @@ export function RepDashboard() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title={`Welcome back, ${user.name.split(" ")[0]}`}
+        title={`Welcome back, ${user?.name.split(" ")[0]}`}
         description="Your personal performance at a glance."
         actions={
           <>
